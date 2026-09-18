@@ -27,7 +27,7 @@ def positive_traits(traits: str) -> str:
     if not traits:
         return ""
     parts = [part.strip() for part in traits.replace("。", "；").split("；")]
-    kept = [part for part in parts if part and not any(word in part for word in ("避免", "不要", "不准"))]
+    kept = [part for part in parts if part and not any(word in part for word in ("避免", "不要", "不准", "禁止"))]
     return "；".join(kept)
 
 
@@ -64,9 +64,13 @@ def resolve(model: str, style: str, policy: dict | None = None) -> dict:
         use_reference_image = False
         prompt_traits = traits
     else:
-        activation_source = "reference-image"
         use_reference_image = True
-        prompt_traits = ""
+        if traits:
+            activation_source = "name+style+traits+reference-image"
+            prompt_traits = traits
+        else:
+            activation_source = "reference-image"
+            prompt_traits = ""
     return {
         "model": model,
         "style": number,
