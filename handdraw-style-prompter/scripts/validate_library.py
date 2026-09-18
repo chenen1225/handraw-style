@@ -163,7 +163,7 @@ def main() -> None:
     for token in ["preserve the user's theme exactly", "Do not expand, paraphrase, interpret", "show the resolved reference image to the user outside the prompts", "Do not inject it into a `graphic-text` copyable prompt"]:
         if token not in skill_text:
             fail(f"graphic-text prompt contract is missing {token}")
-    for token in ["Session initialization", "任何首次请求", "mcp__codex_app__open_in_codex", "target.type=\"browser\"", "file:///E:/handraw-style/handdraw-style-prompter/gallery/index.html", "Never open `gallery/index.html` as `target.type=\"file\"`", "当前处于纯图模式，可切换为图文模式。", "Do not repeat the browser call or this first-session status notice", "fallback link"]:
+    for token in ["Session initialization", "任何首次请求", "mcp__codex_app__open_in_codex", "target.type=\"browser\"", "file:///E:/handraw-style/handdraw-style-prompter/gallery/index.html", "Never open `gallery/index.html` as `target.type=\"file\"`", "当前处于纯图模式，可切换为图文模式。", "Do not repeat the browser call or this first-session status notice", "fallback link", "<directory containing this SKILL.md>/gallery/index.html", "any other host (WorkBuddy, Claude, or general agents)"]:
         if token not in skill_text:
             fail(f"session initialization contract is missing {token}")
     for token in ['id="preview"', 'class="sheet"', 'dialog.showModal()', 'event.target===dialog']:
